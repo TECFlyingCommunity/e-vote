@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap");
 body {
   font-family: "Karla", sans-serif;
-  background-color: #d0d0ce;
+  background-color: red;
   min-height: 100vh;
 }
 

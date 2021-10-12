@@ -1,4 +1,5 @@
 <template>
+
   <div>
     <section class="text-gray-700 body-font">
       <div
@@ -886,5 +887,5 @@ export default {
 
 <style >
 @import "./../../node_modules/tailwindcss/dist/tailwind.min.css";
-@import "./../assets/css/index.css"
+@import "./../assets/css/index.css";
 </style>

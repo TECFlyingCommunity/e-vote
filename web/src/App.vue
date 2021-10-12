@@ -2,7 +2,7 @@
   <v-app>
    <toolbar/>
    <v-main>
-     <v-container fluid fill-height>
+     <v-container  >
        <router-view/>
      </v-container>
    </v-main>

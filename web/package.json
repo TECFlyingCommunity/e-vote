@@ -17,7 +17,10 @@
     "vue-router": "^3.5.2",
     "vuetify": "^2.4.0",
     "vuex": "^3.6.2",
-    "tailwindcss": "^2.2.15"
+    "tailwindcss": "^2.2.15",
+    "bootstrap": "^4.4.1",
+    "chart.js": "^3.5.1",
+    "jquery": "^3.6.0"
 
   },
   "devDependencies": {
