@@ -1,4 +1,4 @@
-package io.github.tecflyingcommunity.evoto.resources;
+package io.github.tecflyingcommunity.evoto.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import io.github.tecflyingcommunity.evoto.domain.Entity.Candidato;
+import io.github.tecflyingcommunity.evoto.domain.Candidato;
 import io.github.tecflyingcommunity.evoto.services.CandidatoService;
 
 @RestController
 @RequestMapping(value = "/candidato")
-public class CandidatoResource {
+public class CandidatoController {
 	
 	@Autowired
 	private CandidatoService service;

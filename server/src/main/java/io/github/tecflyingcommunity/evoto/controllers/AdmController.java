@@ -1,4 +1,4 @@
-package io.github.tecflyingcommunity.evoto.resources;
+package io.github.tecflyingcommunity.evoto.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -12,36 +12,43 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import io.github.tecflyingcommunity.evoto.domain.Entity.Voto;
-import io.github.tecflyingcommunity.evoto.services.VotoService;
+import io.github.tecflyingcommunity.evoto.domain.Adm;
+import io.github.tecflyingcommunity.evoto.services.AdmService;
 
 @RestController
-@RequestMapping(value = "/voto")
-public class VotoResource {
-
+@RequestMapping(value = "/adm")
+public class AdmController {
 	
 	@Autowired
-	private VotoService service;
+	private AdmService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Voto> find(@PathVariable Integer id) {
-		Voto obj = service.find(id);
+	public ResponseEntity<Adm> find(@PathVariable Integer id) {
+		Adm obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Voto obj) {
+	public ResponseEntity<Void> insert(@RequestBody Adm obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
+
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Voto>> findAll() {
-		List<Voto> list = service.findAll();
+	public ResponseEntity<List<Adm>> findAll() {
+		List<Adm> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+
 }

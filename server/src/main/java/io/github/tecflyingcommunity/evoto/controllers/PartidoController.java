@@ -1,4 +1,4 @@
-package io.github.tecflyingcommunity.evoto.resources;
+package io.github.tecflyingcommunity.evoto.controllers;
 
 import java.net.URI;
 import java.util.List;
@@ -12,25 +12,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import io.github.tecflyingcommunity.evoto.domain.Entity.Eleitor;
-import io.github.tecflyingcommunity.evoto.services.EleitorService;
+import io.github.tecflyingcommunity.evoto.domain.Partido;
+import io.github.tecflyingcommunity.evoto.services.PartidoService;
 
 @RestController
-@RequestMapping(value = "/eleitor")
-public class EleitorResource {
+@RequestMapping(value = "/partido")
+public class PartidoController {
+
 	
 	@Autowired
-	private EleitorService service;
+	private PartidoService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Eleitor> find(@PathVariable Integer id) {
-		Eleitor obj = service.find(id);
+	public ResponseEntity<Partido> find(@PathVariable Integer id) {
+		Partido obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Eleitor obj) {
+	public ResponseEntity<Void> insert(@RequestBody Partido obj) {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -38,7 +39,7 @@ public class EleitorResource {
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Eleitor obj, @PathVariable Integer id) {
+	public ResponseEntity<Void> update(@RequestBody Partido obj, @PathVariable Integer id) {
 		obj.setId(id);
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
@@ -51,11 +52,8 @@ public class EleitorResource {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Eleitor>> findAll() {
-		List<Eleitor> list = service.findAll();
+	public ResponseEntity<List<Partido>> findAll() {
+		List<Partido> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
-
-	
-	
 }
