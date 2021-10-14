@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 *{
   margin: 0;
@@ -11,7 +10,7 @@
 
 body{
   height: 100vh;
-  background: url(/img/background1.png) no-repeat center;
+  background: url(./../../assets/images/background1.png) no-repeat center;
   background-size: cover;
   display: flex;
   align-items: center;

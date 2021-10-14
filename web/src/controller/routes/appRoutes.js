@@ -13,47 +13,47 @@ const routes = new Router({
         {
             path: '/home',
             name:  'Home',
-            component: ()=> import('@/views/Home.vue'),
+            component: ()=> import('@/view/pages/Home.vue'),
         },
         {
             path: '/dashboard',
             name:  'Dashboard',
-            component: ()=> import('@/views/Dashboard.vue'),
+            component: ()=> import('@/view/pages/Dashboard.vue'),
         },
         {
             path: '/votar',
             name:  'Votar',
-            component: ()=> import('@/views/Votar.vue'),
+            component: ()=> import('@/view/pages/Votar.vue'),
         },
         {
             path: '/login',
             name:  'Login',
-            component: ()=> import('@/views/Login.vue'),
+            component: ()=> import('@/view/pages/Login.vue'),
         },
         {
             path: '/graphs',
             name:  'Graphs',
-            component: ()=> import('@/views/Graphs.vue'),
+            component: ()=> import('@/view/pages/Graphs.vue'),
         },
         {
             path: '/dashboard_eleitor',
             name:  'DashboardEleitor',
-            component: ()=> import('@/views/DashboardEleitor.vue'),
+            component: ()=> import('@/view/pages/DashboardEleitor.vue'),
         },
         {
             path: '/consultar_canditado',
             name:  'ConsultarCanditado',
-            component: ()=> import('@/views/ConsultarCanditado.vue'),
+            component: ()=> import('@/view/pages/ConsultarCanditado.vue'),
         },
         {
             path: '/confimar_voto',
             name:  'ConfimarVoto',
-            component: ()=> import('@/views/ConfimarVoto.vue'),
+            component: ()=> import('@/view/pages/ConfimarVoto.vue'),
         },
         {
             path: '/cadastro',
             name:  'Cadastro',
-            component: ()=> import('@/views/Cadastro.vue'),
+            component: ()=> import('@/view/pages/Cadastro.vue'),
         },
     ],
 });

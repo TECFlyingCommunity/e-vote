@@ -5,7 +5,7 @@
         <div class="card login-card">
           <div class="row no-gutters">
             <div class="col-md-5">
-              <img src="./../assets/images/1.png" alt="login" class="login-card-img" />
+              <img src="./../../assets/images/1.png" alt="login" class="login-card-img" />
               <p
                 class="
                   text-white
@@ -21,7 +21,7 @@
             <div id="vtb" class="col-md-7">
               <div class="card-body">
                 <div class="brand-wrapper">
-                  <img src="./../assets/logo.png" alt="logo" class="logo" />
+                  <img src="./../../assets/logo.png" alt="logo" class="logo" />
                 </div>
                 <p id="roboto" class="login-card-description">
                   Faça seu Cadastro
@@ -113,15 +113,13 @@
 </template>
 
 <script>
+
+import "@mdi/font/css/materialdesignicons.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./../../assets/css/estiloCadastro.css";
+
 export default {
   name: "Cadastro",
 };
 </script>
 
-
-<style>
-@import "./../assets/css/estiloCadastro.css";
-@import "./../../node_modules/@mdi/font/css/materialdesignicons.min.css";
-@import "./../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
-</style>

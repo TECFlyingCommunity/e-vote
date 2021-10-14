@@ -90,7 +90,7 @@
           <img
             class="object-cover object-center rounded"
             alt="hero"
-            src="./../assets/images/img_mod/politic2.jpg"
+            src="./../../assets/images/img_mod/politic2.jpg"
           />
         </div>
       </div>
@@ -323,7 +323,7 @@
           <img
             alt="feature"
             class="object-cover object-center h-full w-full"
-            src="./../assets/images/img_mod/6383.jpg"
+            src="./../../assets/images/img_mod/6383.jpg"
           />
         </div>
         <div
@@ -574,7 +574,7 @@
                   rounded-full
                   mr-4
                 "
-                src="./../assets/images/face/1.png"
+                src="./../../assets/images/face/1.png"
               />
               <div class="flex-grow">
                 <h2 class="text-gray-900 title-font font-medium">
@@ -606,7 +606,7 @@
                   rounded-full
                   mr-4
                 "
-                src="./../assets/images/face/2.png"
+                src="./../../assets/images/face/2.png"
               />
               <div class="flex-grow">
                 <h2 class="text-gray-900 title-font font-medium">
@@ -638,7 +638,7 @@
                   rounded-full
                   mr-4
                 "
-                src="./../assets/images/face/4.png"
+                src="./../../assets/images/face/4.png"
               />
               <div class="flex-grow">
                 <h2 class="text-gray-900 title-font font-medium">Joao Vitor</h2>
@@ -668,7 +668,7 @@
                   rounded-full
                   mr-4
                 "
-                src="./../assets/images/face/6.png"
+                src="./../../assets/images/face/6.png"
               />
               <div class="flex-grow">
                 <h2 class="text-gray-900 title-font font-medium">Elieldo</h2>
@@ -698,7 +698,7 @@
                   rounded-full
                   mr-4
                 "
-                src="./../assets/images/face/5.png"
+                src="./../../assets/images/face/5.png"
               />
               <div class="flex-grow">
                 <h2 class="text-gray-900 title-font font-medium">
@@ -880,12 +880,10 @@
 </template>
 
 <script>
+import "tailwindcss/dist/tailwind.min.css";
+import "./../../assets/css/index.css";
 export default {
   name: "Home",
 };
 </script>
 
-<style >
-@import "./../../node_modules/tailwindcss/dist/tailwind.min.css";
-@import "./../assets/css/index.css";
-</style>
