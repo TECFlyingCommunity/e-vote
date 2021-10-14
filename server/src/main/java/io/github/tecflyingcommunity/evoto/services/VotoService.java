@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import io.github.tecflyingcommunity.evoto.domain.Entity.Voto;
+import io.github.tecflyingcommunity.evoto.domain.Voto;
 import io.github.tecflyingcommunity.evoto.repositories.VotoRepository;
 import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
 

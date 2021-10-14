@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import io.github.tecflyingcommunity.evoto.domain.Entity.Candidato;
+import io.github.tecflyingcommunity.evoto.domain.Candidato;
 import io.github.tecflyingcommunity.evoto.repositories.CandidatoRepository;
 import io.github.tecflyingcommunity.evoto.services.exceptions.DataIntegrityException;
 import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
