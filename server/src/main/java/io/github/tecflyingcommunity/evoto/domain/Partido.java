@@ -1,4 +1,4 @@
-package io.github.tecflyingcommunity.evoto.domain.Entity;
+package io.github.tecflyingcommunity.evoto.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;
