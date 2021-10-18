@@ -49,12 +49,13 @@ public class Candidato  implements Serializable{
 	@OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL)
 	private List<Voto> votos = new ArrayList<>();
 
-	public Candidato(Integer id, int numero, Eleitor eleitor, Partido partido) {
+	public Candidato(Integer id, int numero, Eleitor eleitor, Partido partido, Categoria categoria) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.eleitor = eleitor;
 		this.partido = partido;
+		this.categoria =categoria;
 	}
 
 	public Candidato() {

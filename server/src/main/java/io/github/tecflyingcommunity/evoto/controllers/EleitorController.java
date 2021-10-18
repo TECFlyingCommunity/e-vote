@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
+import io.github.tecflyingcommunity.evoto.domain.dto.EleitorDTO;
 import io.github.tecflyingcommunity.evoto.services.EleitorService;
 
 @RestController
@@ -30,17 +31,17 @@ public class EleitorController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Eleitor obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody EleitorDTO objDTO) {
+		var obj = service.insert(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Eleitor obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = service.update(obj);
+	public ResponseEntity<Void> update(@RequestBody EleitorDTO objDTO, @PathVariable Integer id) {
+		objDTO.setId(id);
+		var obj = service.update(objDTO);
 		return ResponseEntity.noContent().build();
 	}
 	

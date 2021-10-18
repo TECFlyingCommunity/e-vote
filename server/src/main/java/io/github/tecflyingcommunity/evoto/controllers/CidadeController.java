@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.tecflyingcommunity.evoto.domain.Cidade;
+import io.github.tecflyingcommunity.evoto.domain.dto.CidadeDTO;
 import io.github.tecflyingcommunity.evoto.services.CidadeService;
 
 
@@ -32,18 +33,19 @@ public class CidadeController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Cidade obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody CidadeDTO objDTO) {
+		final Cidade obj = service.insert(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Cidade obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = service.update(obj);
-		return ResponseEntity.noContent().build();
+	public ResponseEntity<Void> update(@RequestBody CidadeDTO objDTO, @PathVariable Integer id) {
+		objDTO.setId(id);
+		var obj = service.update(objDTO);
+		ResponseEntity.ok().body(obj);
+		return ResponseEntity. noContent().build();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)

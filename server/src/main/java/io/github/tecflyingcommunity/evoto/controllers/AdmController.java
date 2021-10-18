@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.tecflyingcommunity.evoto.domain.Adm;
+import io.github.tecflyingcommunity.evoto.domain.dto.AdmDTO;
 import io.github.tecflyingcommunity.evoto.services.AdmService;
 
 @RestController
@@ -30,8 +31,8 @@ public class AdmController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Adm obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody AdmDTO objDTo) {
+		var obj = service.insert(objDTo);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

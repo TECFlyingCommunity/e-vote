@@ -39,19 +39,21 @@ public class Eleitor implements Serializable{
 	
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="eleitor")
+	@JoinColumn(name="candidato_id")
 	private Candidato candidato;
 	
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="eleitor")
 	private Adm adm ;
 	
-	public Eleitor(String nome, String email, String senha, String cpf, String titulo) {
+	public Eleitor(String nome, String email, String senha, String cpf, String titulo, Cidade cidade) {
 		super();
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.cpf = cpf;
 		this.titulo = titulo;
+		this.cidade = cidade;
 	}
 	public Eleitor() {
 		super();
@@ -110,6 +112,15 @@ public class Eleitor implements Serializable{
 	}
 	public void setAdm(Adm adm) {
 		this.adm = adm;
+	}
+	
+	
+	
+	public Cidade getCidade() {
+		return cidade;
+	}
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 	@Override
 	public int hashCode() {

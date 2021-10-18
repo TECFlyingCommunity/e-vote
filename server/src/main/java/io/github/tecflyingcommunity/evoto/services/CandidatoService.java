@@ -8,6 +8,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import io.github.tecflyingcommunity.evoto.domain.Candidato;
+import io.github.tecflyingcommunity.evoto.domain.Categoria;
+import io.github.tecflyingcommunity.evoto.domain.Eleitor;
+import io.github.tecflyingcommunity.evoto.domain.Partido;
+import io.github.tecflyingcommunity.evoto.domain.dto.CandidatoDTO;
 import io.github.tecflyingcommunity.evoto.repositories.CandidatoRepository;
 import io.github.tecflyingcommunity.evoto.services.exceptions.DataIntegrityException;
 import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
@@ -19,6 +23,15 @@ public class CandidatoService {
 	@Autowired
 	CandidatoRepository repository;
 	
+	@Autowired
+	private EleitorService eleitorService;
+	
+	@Autowired
+	private CategoriaService categoriaService;
+	
+	@Autowired
+	private PartidoService partidoService;
+	
 	public Candidato find(Integer id) {
 		Optional<Candidato> obj = repository.findById(id);
 		
@@ -26,14 +39,15 @@ public class CandidatoService {
 				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Candidato.class.getName()));
 	}
 	
-	public Candidato insert(Candidato obj) {
-		obj.setId(null);
+	public Candidato insert(CandidatoDTO objDTO) {
+		objDTO.setId(null);
+		final Candidato obj = fromObj(objDTO);
 		return repository.save(obj);
 	}
 	
-	public Candidato update(Candidato obj) {
-		Candidato newObj = find(obj.getId());
-		updateData(newObj, obj);
+	public Candidato update(CandidatoDTO objDTO) {
+		Candidato newObj = find(objDTO.getId());
+		updateData(newObj, fromObj(objDTO));
 		return repository.save(newObj);
 	}
 	
@@ -56,6 +70,17 @@ public class CandidatoService {
 	private void updateData(Candidato newObj, Candidato obj) {
 		newObj.setNumero(obj.getNumero());
 		newObj.setPartido(obj.getPartido());
+		
+	}
+	
+	private Candidato fromObj(CandidatoDTO objDTO) {
+		
+		final Eleitor eleitor = eleitorService.find(objDTO.getEleitorID());
+		final Categoria categoria = categoriaService.find(objDTO.getCategoriaID());
+		final Partido partido = partidoService.find(objDTO.getPartidoID());
+		
+		return new Candidato(objDTO.getId(), objDTO.getNumero(), eleitor, partido,categoria);
+		
 		
 	}
 

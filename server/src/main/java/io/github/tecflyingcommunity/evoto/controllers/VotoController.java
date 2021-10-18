@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.tecflyingcommunity.evoto.domain.Voto;
+import io.github.tecflyingcommunity.evoto.domain.dto.VotoDTO;
 import io.github.tecflyingcommunity.evoto.services.VotoService;
 
 @RestController
@@ -31,8 +32,8 @@ public class VotoController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Voto obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody VotoDTO objDTO) {
+		var obj = service.insert(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

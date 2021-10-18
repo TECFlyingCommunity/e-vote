@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.tecflyingcommunity.evoto.domain.Candidato;
+import io.github.tecflyingcommunity.evoto.domain.dto.CandidatoDTO;
 import io.github.tecflyingcommunity.evoto.services.CandidatoService;
 
 @RestController
@@ -30,17 +31,17 @@ public class CandidatoController {
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Candidato obj) {
-		obj = service.insert(obj);
+	public ResponseEntity<Void> insert(@RequestBody CandidatoDTO objDTO) {
+		var obj = service.insert(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Void> update(@RequestBody Candidato obj, @PathVariable Integer id) {
-		obj.setId(id);
-		obj = service.update(obj);
+	public ResponseEntity<Void> update(@RequestBody CandidatoDTO objDTO, @PathVariable Integer id) {
+		objDTO.setId(id);
+		var obj = service.update(objDTO);
 		return ResponseEntity.noContent().build();
 	}
 	
