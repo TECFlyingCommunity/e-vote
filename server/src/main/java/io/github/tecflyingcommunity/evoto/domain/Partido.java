@@ -22,15 +22,17 @@ public class Partido  implements Serializable{
 	private Integer id;
 	private String nome;
 	private int numero;
+	private String sigla;
 	
 	@OneToMany(mappedBy="partido", cascade=CascadeType.ALL)
 	private List<Candidato> candidatos = new ArrayList<Candidato>();
 
-	public Partido(Integer id, String nome, int numero) {
+	public Partido(Integer id, String nome, int numero, String sigla) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.numero = numero;
+		this.sigla = sigla;
 	}
 
 	public Partido() {
@@ -67,6 +69,14 @@ public class Partido  implements Serializable{
 
 	public void setCandidatos(Candidato candidato) {
 		this.candidatos.add(candidato);
+	}
+	
+	public String getSigla() {
+		return sigla;
+	}
+
+	public void setSigla(String sigla) {
+		this.sigla = sigla;
 	}
 
 	@Override

@@ -28,6 +28,8 @@ public class Eleitor implements Serializable{
 	private String senha;
 	private String cpf;
 	private String titulo;
+	private String telefone;
+
 	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
@@ -46,7 +48,16 @@ public class Eleitor implements Serializable{
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="eleitor")
 	private Adm adm ;
 	
-	public Eleitor(String nome, String email, String senha, String cpf, String titulo, Cidade cidade) {
+
+	public Eleitor(
+			String nome, 
+			String email, 
+			String senha, 
+			String cpf, 
+			String titulo,
+			String telefone,
+			Cidade cidade) {
+
 		super();
 		this.nome = nome;
 		this.email = email;
@@ -54,6 +65,8 @@ public class Eleitor implements Serializable{
 		this.cpf = cpf;
 		this.titulo = titulo;
 		this.cidade = cidade;
+		this.telefone = telefone;
+
 	}
 	public Eleitor() {
 		super();
@@ -114,14 +127,19 @@ public class Eleitor implements Serializable{
 		this.adm = adm;
 	}
 	
-	
-	
 	public Cidade getCidade() {
 		return cidade;
 	}
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
 	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
