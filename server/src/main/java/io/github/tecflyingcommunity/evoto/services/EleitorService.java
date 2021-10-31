@@ -5,17 +5,25 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import io.github.tecflyingcommunity.evoto.domain.Cidade;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.dto.EleitorDTO;
+import io.github.tecflyingcommunity.evoto.domain.enums.Perfil;
+import io.github.tecflyingcommunity.evoto.exceptions.AuthorizationException;
+import io.github.tecflyingcommunity.evoto.exceptions.DataIntegrityException;
+import io.github.tecflyingcommunity.evoto.exceptions.ObjectNotFoundException;
 import io.github.tecflyingcommunity.evoto.repositories.EleitorRepository;
-import io.github.tecflyingcommunity.evoto.services.exceptions.DataIntegrityException;
-import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
+import io.github.tecflyingcommunity.evoto.security.UserSS;
 
 @Service
 public class EleitorService {
+
+
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private EleitorRepository repository;
@@ -24,6 +32,13 @@ public class EleitorService {
 	private CidadeService cidadeService;
 	
 	public Eleitor find(Integer id) {
+
+		UserSS user = UserService.authenticated();
+
+		if (user == null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+
 		Optional<Eleitor> obj = repository.findById(id);
 		
 		return  obj.orElseThrow(() -> new ObjectNotFoundException(
@@ -61,7 +76,7 @@ public class EleitorService {
 	private Eleitor fromObj(EleitorDTO objDTO) {
 		
 		final Cidade cidade = cidadeService.find(objDTO.getCidadeID());
-		return new Eleitor(objDTO.getNome(), objDTO.getEmail(), objDTO.getSenha(), objDTO.getCpf(), objDTO.getTitulo(), cidade);
+		return new Eleitor(objDTO.getNome(), objDTO.getEmail(), passwordEncoder.encode( objDTO.getSenha()), objDTO.getCpf(), objDTO.getTitulo(),null, cidade);
 	}
 	
 	private void updateData(Eleitor newObj, Eleitor obj) {

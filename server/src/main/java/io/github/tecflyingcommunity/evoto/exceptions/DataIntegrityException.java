@@ -1,4 +1,4 @@
-package io.github.tecflyingcommunity.evoto.services.exceptions;
+package io.github.tecflyingcommunity.evoto.exceptions;
 
 public class DataIntegrityException extends RuntimeException {
 
