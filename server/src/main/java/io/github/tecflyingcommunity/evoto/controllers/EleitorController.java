@@ -16,7 +16,9 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.dto.EleitorDTO;
+import io.github.tecflyingcommunity.evoto.security.UserSS;
 import io.github.tecflyingcommunity.evoto.services.EleitorService;
+import io.github.tecflyingcommunity.evoto.services.UserService;
 
 @RestController
 @RequestMapping(value = Constants.API_URL_ELEITOR)
@@ -24,12 +26,21 @@ public class EleitorController {
 	
 	@Autowired
 	private EleitorService service;
+
+
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public ResponseEntity<Eleitor> find(@PathVariable Integer id) {
 		Eleitor obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+
+	@RequestMapping(value="/", method=RequestMethod.GET)
+	public ResponseEntity<Eleitor> current() {
+		Eleitor obj = service.find(UserService.authenticated().getId());
+		return ResponseEntity.ok().body(obj);
+	}
+	
 	
 	
 	@RequestMapping(method=RequestMethod.POST)
@@ -54,11 +65,13 @@ public class EleitorController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(value="/all",method=RequestMethod.GET)
 	public ResponseEntity<List<Eleitor>> findAll() {
 		List<Eleitor> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
+
+
 
 	
 	
