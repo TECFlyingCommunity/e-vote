@@ -12,9 +12,9 @@ import io.github.tecflyingcommunity.evoto.domain.Categoria;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.Partido;
 import io.github.tecflyingcommunity.evoto.domain.dto.CandidatoDTO;
+import io.github.tecflyingcommunity.evoto.exceptions.DataIntegrityException;
+import io.github.tecflyingcommunity.evoto.exceptions.ObjectNotFoundException;
 import io.github.tecflyingcommunity.evoto.repositories.CandidatoRepository;
-import io.github.tecflyingcommunity.evoto.services.exceptions.DataIntegrityException;
-import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CandidatoService {

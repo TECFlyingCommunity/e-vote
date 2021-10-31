@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Estado;
 import io.github.tecflyingcommunity.evoto.services.EstadoService;
 
 
 
 @RestController
-@RequestMapping(value = "/estado")
+@RequestMapping(value = Constants.API_URL_ESTADO)
 public class EstadoController {
 
 	@Autowired
@@ -31,6 +33,7 @@ public class EstadoController {
 	}
 	
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Estado obj) {
 		obj = service.insert(obj);
@@ -39,6 +42,7 @@ public class EstadoController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Estado obj, @PathVariable Integer id) {
 		obj.setId(id);
@@ -46,6 +50,7 @@ public class EstadoController {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);

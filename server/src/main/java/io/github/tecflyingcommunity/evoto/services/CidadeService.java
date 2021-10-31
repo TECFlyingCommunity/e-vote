@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 import io.github.tecflyingcommunity.evoto.domain.Cidade;
 import io.github.tecflyingcommunity.evoto.domain.Estado;
 import io.github.tecflyingcommunity.evoto.domain.dto.CidadeDTO;
+import io.github.tecflyingcommunity.evoto.exceptions.DataIntegrityException;
+import io.github.tecflyingcommunity.evoto.exceptions.ObjectNotFoundException;
 import io.github.tecflyingcommunity.evoto.repositories.CidadeRepository;
-import io.github.tecflyingcommunity.evoto.services.exceptions.DataIntegrityException;
-import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CidadeService {

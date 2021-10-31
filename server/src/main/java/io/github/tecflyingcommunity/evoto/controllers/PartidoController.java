@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Partido;
 import io.github.tecflyingcommunity.evoto.services.PartidoService;
 
 @RestController
-@RequestMapping(value = "/partido")
+@RequestMapping(value = Constants.API_URL_PARTIDO)
 public class PartidoController {
 
 	
@@ -29,7 +31,7 @@ public class PartidoController {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody Partido obj) {
 		obj = service.insert(obj);
@@ -38,6 +40,7 @@ public class PartidoController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody Partido obj, @PathVariable Integer id) {
 		obj.setId(id);
@@ -45,6 +48,7 @@ public class PartidoController {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);

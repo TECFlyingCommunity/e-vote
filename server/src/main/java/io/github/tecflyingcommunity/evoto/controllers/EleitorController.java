@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.dto.EleitorDTO;
 import io.github.tecflyingcommunity.evoto.services.EleitorService;
 
 @RestController
-@RequestMapping(value = "/eleitor")
+@RequestMapping(value = Constants.API_URL_ELEITOR)
 public class EleitorController {
 	
 	@Autowired
@@ -41,10 +43,11 @@ public class EleitorController {
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody EleitorDTO objDTO, @PathVariable Integer id) {
 		objDTO.setId(id);
-		var obj = service.update(objDTO);
+		service.update(objDTO);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);

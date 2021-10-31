@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Voto;
 import io.github.tecflyingcommunity.evoto.domain.dto.VotoDTO;
 import io.github.tecflyingcommunity.evoto.services.VotoService;
 
 @RestController
-@RequestMapping(value = "/voto")
+@RequestMapping(value = Constants.API_URL_VOTO)
 public class VotoController {
 
 	
@@ -30,7 +32,7 @@ public class VotoController {
 		return ResponseEntity.ok().body(obj);
 	}
 	
-	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody VotoDTO objDTO) {
 		var obj = service.insert(objDTO);

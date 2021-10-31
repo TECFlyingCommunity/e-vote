@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Candidato;
 import io.github.tecflyingcommunity.evoto.domain.dto.CandidatoDTO;
 import io.github.tecflyingcommunity.evoto.services.CandidatoService;
 
 @RestController
-@RequestMapping(value = "/candidato")
+@RequestMapping(value = Constants.API_URL_CANDIDATO)
 public class CandidatoController {
 	
 	@Autowired
@@ -30,6 +32,7 @@ public class CandidatoController {
 	}
 	
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody CandidatoDTO objDTO) {
 		var obj = service.insert(objDTO);
@@ -38,13 +41,15 @@ public class CandidatoController {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@RequestBody CandidatoDTO objDTO, @PathVariable Integer id) {
 		objDTO.setId(id);
-		var obj = service.update(objDTO);
+		 service.update(objDTO);
 		return ResponseEntity.noContent().build();
 	}
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);

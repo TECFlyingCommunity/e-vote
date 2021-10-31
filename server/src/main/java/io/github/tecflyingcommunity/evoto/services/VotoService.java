@@ -10,8 +10,8 @@ import io.github.tecflyingcommunity.evoto.domain.Candidato;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.Voto;
 import io.github.tecflyingcommunity.evoto.domain.dto.VotoDTO;
+import io.github.tecflyingcommunity.evoto.exceptions.ObjectNotFoundException;
 import io.github.tecflyingcommunity.evoto.repositories.VotoRepository;
-import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
 
 
 @Service

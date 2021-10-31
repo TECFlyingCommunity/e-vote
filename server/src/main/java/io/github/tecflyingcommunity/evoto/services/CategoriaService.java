@@ -8,9 +8,9 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import io.github.tecflyingcommunity.evoto.domain.Categoria;
+import io.github.tecflyingcommunity.evoto.exceptions.DataIntegrityException;
+import io.github.tecflyingcommunity.evoto.exceptions.ObjectNotFoundException;
 import io.github.tecflyingcommunity.evoto.repositories.CategoriaRepository;
-import io.github.tecflyingcommunity.evoto.services.exceptions.DataIntegrityException;
-import io.github.tecflyingcommunity.evoto.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
