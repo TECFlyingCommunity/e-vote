@@ -1,8 +1,10 @@
 package io.github.tecflyingcommunity.evoto.domain.dto;
 
+import java.io.Serializable;
 
-
-public class AdmDTO {
+public class AdmDTO implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
 
 	private Integer id;
 	private String matricula;

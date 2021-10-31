@@ -1,8 +1,11 @@
 package io.github.tecflyingcommunity.evoto.domain.dto;
 
+import java.io.Serializable;
 
-
-public class CandidatoDTO {
+public class CandidatoDTO implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+	
 	private Integer id;
 	private int numero;
 	private Integer categoriaID; 

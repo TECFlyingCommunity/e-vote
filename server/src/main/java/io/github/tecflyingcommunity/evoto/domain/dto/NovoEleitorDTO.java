@@ -2,22 +2,40 @@ package io.github.tecflyingcommunity.evoto.domain.dto;
 
 import java.io.Serializable;
 
-public class EleitorDTO implements Serializable {
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import io.github.tecflyingcommunity.evoto.services.validation.EleitorInsert;
+
+@EleitorInsert
+public class NovoEleitorDTO implements Serializable {
     
     private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+
+    @NotEmpty(message="Preenchimento obrigatório")
 	private String nome;
-	private String email;
+
+    @NotEmpty(message="Preenchimento obrigatório")
+    @Email(message="Email inválido")
+	private String email;   
+
+    @NotEmpty(message="Preenchimento obrigatório")
 	private String senha;
+
+    @NotEmpty(message="Preenchimento obrigatório")
 	private String cpf;
+
+    @NotEmpty(message="Preenchimento obrigatório")
 	private String titulo;
+
+    @NotEmpty(message="Preenchimento obrigatório")
 	private Integer cidadeID;
 	
-	public EleitorDTO(Integer id, String nome, String email, String senha, String cpf, String titulo,
+	public NovoEleitorDTO( String nome, String email, String senha, String cpf, String titulo,
 			Integer cidadeID) {
 		super();
-		this.id = id;
+
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
@@ -26,17 +44,11 @@ public class EleitorDTO implements Serializable {
 		this.cidadeID = cidadeID;
 	}
 
-	public EleitorDTO() {
+	public NovoEleitorDTO() {
 		super();
 	}
 
-	public Integer getId() {
-		return id;
-	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getNome() {
 		return nome;
@@ -85,9 +97,5 @@ public class EleitorDTO implements Serializable {
 	public void setCidadeID(Integer cidadeID) {
 		this.cidadeID = cidadeID;
 	}
-	
-	
-
-	
 	
 }
