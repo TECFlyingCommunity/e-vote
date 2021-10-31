@@ -6,13 +6,13 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -26,10 +26,11 @@ public class Candidato  implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Integer id;
+
+	@Column(unique=true)
 	private int numero;
 	
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="categoria_id")
 	private Categoria categoria; 
@@ -37,7 +38,6 @@ public class Candidato  implements Serializable{
 	
 	@OneToOne
 	@JoinColumn(name="eleitor_id")
-	@MapsId
 	private Eleitor eleitor;
 	
 	@JsonIgnore
@@ -100,6 +100,16 @@ public class Candidato  implements Serializable{
 
 	public void setVotos(Voto voto) {
 		this.votos.add(voto);
+	}
+
+	
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	@Override

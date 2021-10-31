@@ -1,18 +1,30 @@
 package io.github.tecflyingcommunity.evoto.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import io.github.tecflyingcommunity.evoto.domain.enums.Perfil;
 
 
 @Entity
@@ -24,20 +36,32 @@ public class Eleitor implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Integer id;
 	private String nome;
+
+	@Column(unique=true)
 	private String email;
-	private String senha;
+
+	@Column(unique=true)
 	private String cpf;
+
+	@Column(unique=true)
 	private String titulo;
 	private String telefone;
 
+	@JsonIgnore
+	private String senha;
+
+
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name="PERFIS")
+	private Set<Integer> perfis = new HashSet<>();
 	
 	@ManyToOne
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
 	@JsonIgnore
-	@OneToOne(cascade=CascadeType.ALL,mappedBy = "eleitor")
-	private Voto voto;
+	@OneToMany(cascade=CascadeType.ALL,mappedBy = "eleitor")
+	private List<Voto> votos = new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="eleitor")
@@ -66,10 +90,12 @@ public class Eleitor implements Serializable{
 		this.titulo = titulo;
 		this.cidade = cidade;
 		this.telefone = telefone;
+		addPerfil(Perfil.ELEITOR);
 
 	}
 	public Eleitor() {
 		super();
+		addPerfil(Perfil.ELEITOR);
 	}
 	public Integer getId() {
 		return id;
@@ -95,6 +121,14 @@ public class Eleitor implements Serializable{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+	
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
+	}
 	public String getCpf() {
 		return cpf;
 	}
@@ -107,13 +141,14 @@ public class Eleitor implements Serializable{
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public Voto getVoto() {
-		return voto;
-	}
-	public void setVoto(Voto voto) {
-		this.voto = voto;
-	}
 	
+	
+	public List<Voto> getVotos() {
+		return votos;
+	}
+	public void setVotos(Voto voto) {
+		this.votos.add(voto);
+	}
 	public Candidato getCandidato() {
 		return candidato;
 	}
@@ -158,7 +193,7 @@ public class Eleitor implements Serializable{
 	@Override
 	public String toString() {
 		return "Eleitor [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", cpf=" + cpf
-				+ ", titulo=" + titulo + ", voto=" + voto + ", candidato=" + candidato + ", adm=" + adm + "]";
+				+ ", titulo=" + titulo + " candidato=" + candidato + ", adm=" + adm + "]";
 	}
 	
 	

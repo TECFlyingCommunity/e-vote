@@ -6,11 +6,14 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Partido  implements Serializable{
@@ -21,9 +24,13 @@ public class Partido  implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY )
 	private Integer id;
 	private String nome;
+
+	@Column(unique=true)
 	private int numero;
+
 	private String sigla;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="partido", cascade=CascadeType.ALL)
 	private List<Candidato> candidatos = new ArrayList<Candidato>();
 
