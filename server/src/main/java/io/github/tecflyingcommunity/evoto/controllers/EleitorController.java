@@ -16,7 +16,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.dto.EleitorDTO;
-import io.github.tecflyingcommunity.evoto.security.UserSS;
 import io.github.tecflyingcommunity.evoto.services.EleitorService;
 import io.github.tecflyingcommunity.evoto.services.UserService;
 
@@ -35,7 +34,7 @@ public class EleitorController {
 		return ResponseEntity.ok().body(obj);
 	}
 
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<Eleitor> current() {
 		Eleitor obj = service.find(UserService.authenticated().getId());
 		return ResponseEntity.ok().body(obj);
