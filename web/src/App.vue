@@ -11,6 +11,13 @@
 
 <script>
 import Toolbar from './view/components/Toolbar.vue';
+import store from './controller/store';
+
+try {
+  store.dispatch('ActionCheckToken');
+} catch (error) {
+  console.log(error);
+}
 
 
 export default {
@@ -23,5 +30,8 @@ export default {
   data: () => ({
     //
   }),
+
+  methods:{
+  }
 };
 </script>

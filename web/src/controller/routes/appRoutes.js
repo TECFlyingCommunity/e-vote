@@ -1,14 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import beforeEach from './beforeEach';
 
 Vue.use(Router);
+
+
 
 const routes = new Router({
     mode: 'history',
     routes: [
         {
             path: '/',
-            redirect: '/home'
+            redirect:'/home'
+
         },
         {
             path: '/home',
@@ -57,5 +61,7 @@ const routes = new Router({
         },
     ],
 });
+
+routes.beforeEach(beforeEach);
 
 export default routes;

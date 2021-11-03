@@ -1,5 +1,4 @@
 <template>
-
   <div>
     <section class="text-gray-700 body-font">
       <div
@@ -21,8 +20,7 @@
             lg:pr-24
             md:pr-16
             flex flex-col
-            md:items-start
-            md:text-left
+            md:items-start md:text-left
             mb-16
             md:mb-0
             items-center
@@ -39,7 +37,7 @@
               text-gray-900
             "
           >
-            Conheça o <br class="hidden lg:inline-block" />Vote Bem
+            Conheça o <br class="hidden lg:inline-block" />Vote Bem {{user.nome}}
           </h1>
           <p class="mb-8 leading-relaxed">
             Sistema de votação online ,com o objetivo de facilitar o voto
@@ -331,9 +329,7 @@
             flex flex-col flex-wrap
             lg:py-6
             -mb-10
-            lg:w-1/2
-            lg:pl-12
-            lg:text-left
+            lg:w-1/2 lg:pl-12 lg:text-left
             text-center
           "
         >
@@ -751,128 +747,205 @@
       <footer class="footer-1 bg-gray-100 py-8 sm:py-12">
         <div class="container mx-auto px-4">
           <div class="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
-          <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
-            <h5 class="text-xl font-bold mb-6">Serviços</h5>
-            <ul class="list-none footer-links">
-              <li class="mb-2">
-                <a
-                  href="#"
-                  class="
-                    border-b border-solid border-transparent
-                    hover:border-purple-800
-                    hover:text-purple-800
-                  "
-                  >Votar</a
-                >
-              </li>
-              <li class="mb-2">
-                <a
-                  href="#"
-                  class="
-                    border-b border-solid border-transparent
-                    hover:border-purple-800
-                    hover:text-purple-800
-                  "
-                  >Cadastrar</a
-                >
-              </li>
-              <li class="mb-2">
-                <a
-                  href="#"
-                  class="
-                    border-b border-solid border-transparent
-                    hover:border-purple-800
-                    hover:text-purple-800
-                  "
-                  >Logar</a
-                >
-              </li>
-              <li class="mb-2">
-                <a
-                  href="#"
-                  class="
-                    border-b border-solid border-transparent
-                    hover:border-purple-800
-                    hover:text-purple-800
-                  "
-                  >Consultar</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-            <h5 class="text-xl font-bold mb-6">Sobre</h5>
-            <ul class="list-none footer-links">
-              <li class="mb-2">
-                <a
-                  href="#"
-                  class="
-                    border-b border-solid border-transparent
-                    hover:border-purple-800
-                    hover:text-purple-800
-                  "
-                  >Sobre</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-            <h5 class="text-xl font-bold mb-6">TecFly</h5>
-            <ul class="list-none footer-links">
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Equipe</a>
-              </li>
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Localização</a>
-              </li>
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Privacidade</a>
-              </li>
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Termos
-                  de Uso</a>
-              </li>
-            </ul>
-          </div>
-           <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
-            <h5 class="text-xl font-bold mb-6">Mapa Do Site</h5>
-            <ul class="list-none footer-links">
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Inicio</a>
-              </li>
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Cadastro</a>
-              </li>
-              <li class="mb-2">
-                <a href="#"
-                  class="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Legislaçao</a>
-              </li>
-            </ul>
-          </div>
-          <div class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto ">
-            <h5 class="text-xl font-bold mb-6 sm:text-center xl:text-left">Visite nosso perfil</h5>
-            <div class="flex sm:justify-center xl:justify-start justify-center">
-              <a href=""
-                class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600">
-                <i class="fab fa-facebook"></i>
-              </a>
-              <a href=""
-                class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href=""
-                class="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600">
-                <i class="fab fa-youtube"></i>
-              </a>
+            <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
+              <h5 class="text-xl font-bold mb-6">Serviços</h5>
+              <ul class="list-none footer-links">
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Votar</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Cadastrar</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Logar</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Consultar</a
+                  >
+                </li>
+              </ul>
             </div>
+            <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
+              <h5 class="text-xl font-bold mb-6">Sobre</h5>
+              <ul class="list-none footer-links">
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Sobre</a
+                  >
+                </li>
+              </ul>
             </div>
-        </div>
+            <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+              <h5 class="text-xl font-bold mb-6">TecFly</h5>
+              <ul class="list-none footer-links">
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Equipe</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Localização</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Privacidade</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Termos de Uso</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
+              <h5 class="text-xl font-bold mb-6">Mapa Do Site</h5>
+              <ul class="list-none footer-links">
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Inicio</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Cadastro</a
+                  >
+                </li>
+                <li class="mb-2">
+                  <a
+                    href="#"
+                    class="
+                      border-b border-solid border-transparent
+                      hover:border-purple-800 hover:text-purple-800
+                    "
+                    >Legislaçao</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div
+              class="px-4 mt-4 sm:w-1/3 xl:w-1/6 sm:mx-auto xl:mt-0 xl:ml-auto"
+            >
+              <h5 class="text-xl font-bold mb-6 sm:text-center xl:text-left">
+                Visite nosso perfil
+              </h5>
+              <div
+                class="flex sm:justify-center xl:justify-start justify-center"
+              >
+                <a
+                  href=""
+                  class="
+                    w-8
+                    h-8
+                    border border-2 border-gray-400
+                    rounded-full
+                    text-center
+                    py-1
+                    text-gray-600
+                    hover:text-white hover:bg-blue-600 hover:border-blue-600
+                  "
+                >
+                  <i class="fab fa-facebook"></i>
+                </a>
+                <a
+                  href=""
+                  class="
+                    w-8
+                    h-8
+                    border border-2 border-gray-400
+                    rounded-full
+                    text-center
+                    py-1
+                    ml-2
+                    text-gray-600
+                    hover:text-white hover:bg-blue-400 hover:border-blue-400
+                  "
+                >
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a
+                  href=""
+                  class="
+                    w-8
+                    h-8
+                    border border-2 border-gray-400
+                    rounded-full
+                    text-center
+                    py-1
+                    ml-2
+                    text-gray-600
+                    hover:text-white hover:bg-red-600 hover:border-red-600
+                  "
+                >
+                  <i class="fab fa-youtube"></i>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </footer>
     </footer>
@@ -882,8 +955,24 @@
 <script>
 import "tailwindcss/dist/tailwind.min.css";
 import "./../../assets/css/index.css";
+// import store from "./../../controller/store"
+import { mapState } from 'vuex'
+
 export default {
   name: "Home",
+  
+  data() {
+    return {
+      
+    }
+  },
+  computed:{
+
+    ...mapState([
+      'user'
+    ]),
+   
+  }
 };
 </script>
 

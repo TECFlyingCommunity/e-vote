@@ -27,6 +27,10 @@
        <v-btn text href='/home#contato' >
        Contato
       </v-btn>
+
+      <v-btn text @click='signOut()' >
+       Sair
+      </v-btn>
     </v-app-bar>
 
     
@@ -34,7 +38,18 @@
 </template>
 
 <script>
+
+import { mapActions } from 'vuex';
+
 export default {
-    name:  'Toolbar'
+    name:  'Toolbar',
+    methods:{
+      ...mapActions(['ActionSignOut']),
+
+      signOut: function(){
+        this.ActionSignOut();
+        this.$router.push({ name: 'Login' });
+      }
+    }
 }
 </script>

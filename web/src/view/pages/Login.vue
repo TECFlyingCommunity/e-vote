@@ -29,13 +29,14 @@
                   <img src="./../../assets/logo.png" alt="logo" class="logo" />
                 </div>
                 <p id="roboto" class="login-card-description">FAÇA SEU LOGIN</p>
-                <form action="/login" method="POST">
+                <form @submit.prevent="submit()">
                   <div id="vvb" class="form-group">
                     <label for="email" class="sr-only">Email</label>
                     <input
                       type="email"
                       name="email"
                       id="email"
+                      v-model="form.email"
                       class="form-control"
                       placeholder="Email"
                     />
@@ -46,6 +47,7 @@
                       type="password"
                       name="senha"
                       id="password"
+                      v-model="form.senha"
                       class="form-control"
                       placeholder="***********"
                     />
@@ -81,7 +83,28 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "@mdi/font/css/materialdesignicons.min.css";
 import "./../../assets/css/estiloLogin.css";
+import { mapActions } from 'vuex'
+import * as actionsTypes from '../../controller/store/actions-types';  
 export default {
-    name: 'Login'
+  
+    name: 'Login',
+    data: () => ({
+    form: {
+      email: 'pedroermarinho@gmail.com',
+      senha: '123'
+    }
+  }),
+  methods: {
+    ...mapActions([actionsTypes.ActionDoLogin]),
+    async submit () {
+      try {
+        console.log(this.form)
+        await this.ActionDoLogin(this.form)
+        this.$router.push({ name: 'Home' })
+      } catch (err) {
+        alert(err.data ? err.data.message : 'Não foi possível fazer login')
+      }
+    }
+  }
 }
 </script>
