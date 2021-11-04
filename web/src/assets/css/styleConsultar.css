@@ -8,13 +8,9 @@
   text-decoration: none;
 }
 
-body{
-  height: 100vh;
+main{
+
   background: url(./../../assets/images/background1.png) no-repeat center;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 

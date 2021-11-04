@@ -49,7 +49,7 @@
           </p>
           <div class="flex justify-center">
             <a
-              href="/votar"
+              @click="vota"
               class="
                 inline-flex
                 text-white
@@ -955,7 +955,6 @@
 <script>
 import "tailwindcss/dist/tailwind.min.css";
 import "./../../assets/css/index.css";
-// import store from "./../../controller/store"
 import { mapState } from 'vuex'
 
 export default {
@@ -971,8 +970,13 @@ export default {
     ...mapState([
       'user'
     ]),
-   
-  }
+  },
+  methods: {
+    vota(){
+       this.$router.push({ name: 'ConsultarCanditado' });
+    }
+  },
+  
 };
 </script>
 
