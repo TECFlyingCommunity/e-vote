@@ -15,6 +15,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import io.github.tecflyingcommunity.evoto.config.Constants;
 import io.github.tecflyingcommunity.evoto.domain.Voto;
+import io.github.tecflyingcommunity.evoto.domain.dto.NovoVotoDTO;
 import io.github.tecflyingcommunity.evoto.domain.dto.VotoDTO;
 import io.github.tecflyingcommunity.evoto.services.VotoService;
 
@@ -31,10 +32,11 @@ public class VotoController {
 		Voto obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+
 	
 	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody VotoDTO objDTO) {
+	public ResponseEntity<Void> insert(@RequestBody NovoVotoDTO objDTO) {
 		var obj = service.insert(objDTO);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -43,8 +45,8 @@ public class VotoController {
 	
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<List<Voto>> findAll() {
-		List<Voto> list = service.findAll();
+	public ResponseEntity<List<VotoDTO>> findAll() {
+		List<VotoDTO> list = service.findAll();
 		return ResponseEntity.ok().body(list);
 	}
 }

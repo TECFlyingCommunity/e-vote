@@ -2,51 +2,42 @@ package io.github.tecflyingcommunity.evoto.domain.dto;
 
 import java.io.Serializable;
 
+import io.github.tecflyingcommunity.evoto.domain.Candidato;
+
 public class VotoDTO implements Serializable {
-    
-    private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	
 
-	private Integer eleitorID;
+	private static final long serialVersionUID = 1L;
 
-	private Integer candidatoID;
+	private Candidato candidato;
 
-	public VotoDTO(Integer id, Integer eleitorID, Integer candidatoID) {
-		super();
-		this.id = id;
-		this.eleitorID = eleitorID;
-		this.candidatoID = candidatoID;
-	}
+	private Integer quantVoto;
 
 	public VotoDTO() {
 		super();
 	}
 
-	public Integer getId() {
-		return id;
+	public VotoDTO(Candidato candidato, Integer quantVoto) {
+		this.candidato = candidato;
+		this.quantVoto = quantVoto;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public Candidato getCandidato() {
+		return candidato;
 	}
 
-	public Integer getEleitorID() {
-		return eleitorID;
+	public void setCandidato(Candidato candidato) {
+		this.candidato = candidato;
 	}
 
-	public void setEleitorID(Integer eleitorID) {
-		this.eleitorID = eleitorID;
+	public Integer getQuantVoto() {
+		return quantVoto;
 	}
 
-	public Integer getCandidatoID() {
-		return candidatoID;
+	public void setQuantVoto(Integer quantVoto) {
+		this.quantVoto = quantVoto;
 	}
 
-	public void setCandidatoID(Integer candidatoID) {
-		this.candidatoID = candidatoID;
-	}
 	
-	
+
+
 }

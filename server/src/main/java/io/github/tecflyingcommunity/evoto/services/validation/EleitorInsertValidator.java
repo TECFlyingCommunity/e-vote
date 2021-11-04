@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import io.github.tecflyingcommunity.evoto.domain.Eleitor;
 import io.github.tecflyingcommunity.evoto.domain.dto.NovoEleitorDTO;
 import io.github.tecflyingcommunity.evoto.exceptions.FieldMessage;
-import io.github.tecflyingcommunity.evoto.exceptions.FileException;
 import io.github.tecflyingcommunity.evoto.repositories.EleitorRepository;
 
 public class EleitorInsertValidator implements ConstraintValidator<EleitorInsert, NovoEleitorDTO> {

@@ -1,9 +1,7 @@
 package io.github.tecflyingcommunity.evoto.domain;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -19,7 +17,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -60,8 +57,8 @@ public class Eleitor implements Serializable{
 	private Cidade cidade;
 	
 	@JsonIgnore
-	@OneToMany(cascade=CascadeType.ALL,mappedBy = "eleitor")
-	private List<Voto> votos = new ArrayList<>();
+	@OneToOne(cascade=CascadeType.ALL,mappedBy = "eleitor")
+	private Voto voto;
 	
 	@JsonIgnore
 	@OneToOne(cascade=CascadeType.ALL, mappedBy="eleitor")
@@ -143,11 +140,11 @@ public class Eleitor implements Serializable{
 	}
 	
 	
-	public List<Voto> getVotos() {
-		return votos;
+	public Voto getVoto() {
+		return voto;
 	}
-	public void setVotos(Voto voto) {
-		this.votos.add(voto);
+	public void setVoto(Voto voto) {
+		this.voto =voto;
 	}
 	public Candidato getCandidato() {
 		return candidato;

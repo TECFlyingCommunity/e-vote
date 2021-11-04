@@ -45,7 +45,7 @@ public class Candidato  implements Serializable{
 	@JoinColumn(name="partido_id")
 	private Partido partido;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "candidato", cascade = CascadeType.ALL)
 	private List<Voto> votos = new ArrayList<>();
 
