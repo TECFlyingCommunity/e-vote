@@ -14,7 +14,10 @@
           <a href="#" class="fab fa-twitter"></a>
         </div>
         <a  @click="confirmarVota()" class="contact-btn"
-          >Votar
+          >Confirmar
+          </a>
+          <a @click="voltar()"  class="contact-btn"
+          >Cancelar
           </a>
       </div>
       <div class="card-footer">
@@ -47,6 +50,10 @@ export default {
   methods: {
     confirmarVota() {
       this.$router.push({ name: "Graphs" });
+    },
+
+    voltar() {
+      this.$router.push({ name: "Home" });
     },
   },
 };
