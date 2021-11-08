@@ -4,6 +4,8 @@ import * as typesMutation from './mutation-types';
 import * as typesActions from './actions-types';
 import * as storage from './storage';
 import { http } from './../../model/http';
+import {URL_API} from './../constantes';
+
 
 Vue.use(Vuex);
 
@@ -24,7 +26,7 @@ export default new Vuex.Store({
     actions: {
         async [typesActions.ActionDoLogin]({ dispatch }, payload) {
 
-            let requestToken = await http.post("http://localhost:8080/login", {
+            let requestToken = await http.post(URL_API+"login", {
                 "email": payload.email,
                 "senha": payload.senha
             });
@@ -33,7 +35,7 @@ export default new Vuex.Store({
 
             dispatch(typesActions.ActionSetToken, token);
 
-            let requestUser = await http.get('http://localhost:8080/api/eleitor');
+            let requestUser = await http.get(URL_API+'api/eleitor');
 
             console.log(requestUser.data);
 
@@ -57,7 +59,7 @@ export default new Vuex.Store({
         },
 
         async [typesActions.ActionLoadSession]({ dispatch }) {
-            let requestUser = await http.get('http://localhost:8080/api/eleitor');
+            let requestUser = await http.get(URL_API+'api/eleitor');
             return new Promise( (resolve, reject) => {
                 try {
                     dispatch(typesActions.ActionSetUser, requestUser.data);

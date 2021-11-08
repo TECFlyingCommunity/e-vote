@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.tecflyingcommunity</groupId>
 	<artifactId>e-voto</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>e-voto</name>
 	<description>Sistema de votação online</description>
 	<properties>

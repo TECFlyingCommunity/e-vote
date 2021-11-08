@@ -1,8 +1,8 @@
 import {http} from '../model/http';
-
+import {URL_API} from './constantes';
 
 export default async function(form){
-    await http.post("http://localhost:8080/api/eleitor",{
+    await http.post(URL_API+"api/eleitor",{
         "nome":form.nome,
         "email":form.email,
         "senha":form.senha,
