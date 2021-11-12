@@ -41,7 +41,7 @@
           > 
             
             <p>Conheça o Vote Bem</p>
-            <span><h6>{{ user.nome }}</h6></span>
+            <span>{{ user.nome }}</span>
             
           </h1>
 
