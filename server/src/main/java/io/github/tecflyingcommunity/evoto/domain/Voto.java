@@ -24,7 +24,7 @@ public class Voto  implements Serializable{
 	
 	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name = "eleitor_id")
+	@JoinColumn(name = "eleitor_id",unique=true)
 	private Eleitor eleitor;
 	
 	

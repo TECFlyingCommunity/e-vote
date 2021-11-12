@@ -38,6 +38,15 @@ public class CandidatoService {
 		return  obj.orElseThrow(() -> new ObjectNotFoundException(
 				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Candidato.class.getName()));
 	}
+
+	public Candidato findByNumero(int numero) {
+		Candidato obj = repository.findByNumero(numero);
+
+		if (obj == null) {
+			throw new ObjectNotFoundException("Candidato não encontrado");
+		}
+		return  obj;
+	}
 	
 	public Candidato insert(CandidatoDTO objDTO) {
 		objDTO.setId(null);

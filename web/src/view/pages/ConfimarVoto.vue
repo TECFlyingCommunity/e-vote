@@ -5,8 +5,8 @@
         <div class="pic">
           <img src="./../../assets/images/pic.png" alt="" />
         </div>
-        <div class="nome">nome</div>
-        <div class="cargo">Presidente</div>
+        <div class="nome">{{nome}}</div>
+        <div class="cargo">{{categoria}}</div>
         <div class="bt">
           <a href="#" class="fab fa-twitter"></a>
           <a href="#" class="fab fa-twitter"></a>
@@ -23,19 +23,15 @@
       <div class="card-footer">
         <div class="numbers">
           <div class="item">
-            <span>numero</span>
+            <span>{{numero}}</span>
             Numero
           </div>
           <div class="border"></div>
           <div class="item">
-            <span>BAIA</span>
+            <span>{{estado}}</span>
             Nacionalidade
           </div>
-          <div class="border"></div>
-          <div class="item">
-            <span>Lula</span>
-            Rival
-          </div>
+         
         </div>
       </div>
     </div>
@@ -44,17 +40,41 @@
 
 <script>
 import "./../../assets/css/styleVotar.css";
+import {candidato,votar} from './../../controller/votaController'
 export default {
+
   name: "ConfirmarVoto",
 
+  data() {
+    return {
+      nome:'',
+      numero:'',
+      estado:'',
+      categoria:''
+    }
+  },
+
   methods: {
-    confirmarVota() {
-      this.$router.push({ name: "Graphs" });
+    async confirmarVota() {
+      try {
+        await votar(candidato.id);
+        this.$router.push({ name: "Graphs" });  
+      } catch (error) {
+        alert(error.data.message)
+      }
+      
     },
 
     voltar() {
       this.$router.push({ name: "Home" });
     },
+  },
+
+  created() {
+    this.nome = candidato.eleitor.nome;
+    this.numero = candidato.numero;
+    this.estado = candidato.eleitor.cidade.estado.name;
+    this.categoria = candidato.categoria.nome;
   },
 };
 </script>

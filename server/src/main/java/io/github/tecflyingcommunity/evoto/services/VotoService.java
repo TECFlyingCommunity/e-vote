@@ -51,8 +51,18 @@ public class VotoService {
 
 	
 	private Voto fromOBJ(NovoVotoDTO objDTO) {
+
 		final Eleitor eleitor = eleitorService.find(objDTO.getEleitorID());
 		final Candidato candidato = candidatoService.find(objDTO.getCandidatoID());
+
+		if(eleitor == null){
+			throw new ObjectNotFoundException("Eleitor não encontrado");
+		}
+
+		if(candidato == null){
+			throw new ObjectNotFoundException("Candidato não encontrado");
+		}
+
 		return new Voto(objDTO.getId(), eleitor, candidato);
 	}
 
@@ -67,18 +77,10 @@ public class VotoService {
 			int quantVoto =  repository.countByCandidato(candidato);
 
 			votos.add(new VotoDTO(candidato, quantVoto));
-
-
 		}
 		
-		
-
-
-
 		return votos;
 	}
 	
-	
-
 
 }

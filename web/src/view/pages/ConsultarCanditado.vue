@@ -12,6 +12,7 @@
             <input
               class="candi"
               name="candidato"
+              v-model="numero"
               type="text"
               placeholder="Numero do Candidato"
             />
@@ -43,13 +44,30 @@
 
 <script>
 import "./../../assets/css/styleConsultar.css";
+
+import {candidatoInfo} from './../../controller/votaController'
+
+
 export default {
   name: "ConsultarCandiatato",
+
+  data() {
+    return {
+      numero:0
+    }
+  },
   
   methods: {
-    consultarVoto(){
-       this.$router.push({ name: 'ConfimarVoto' });
+    async consultarVoto(){
+      try {
+        await candidatoInfo(this.numero);
+        this.$router.push({ name: 'ConfimarVoto' });
+      } catch (error) {
+        alert(error.data.message)
+      }
+        
     }
+
   },
 };
 </script>
