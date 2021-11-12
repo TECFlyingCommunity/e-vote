@@ -20,16 +20,6 @@ const routes = new Router({
             component: ()=> import('@/view/pages/Home.vue'),
         },
         {
-            path: '/dashboard',
-            name:  'Dashboard',
-            component: ()=> import('@/view/pages/Dashboard.vue'),
-        },
-        {
-            path: '/votar',
-            name:  'Votar',
-            component: ()=> import('@/view/pages/Votar.vue'),
-        },
-        {
             path: '/login',
             name:  'Login',
             component: ()=> import('@/view/pages/Login.vue'),
@@ -38,11 +28,6 @@ const routes = new Router({
             path: '/graphs',
             name:  'Graphs',
             component: ()=> import('@/view/pages/Graphs.vue'),
-        },
-        {
-            path: '/dashboard_eleitor',
-            name:  'DashboardEleitor',
-            component: ()=> import('@/view/pages/DashboardEleitor.vue'),
         },
         {
             path: '/consultar_canditado',
@@ -58,6 +43,31 @@ const routes = new Router({
             path: '/cadastro',
             name:  'Cadastro',
             component: ()=> import('@/view/pages/Cadastro.vue'),
+        },
+        {
+            path: '/dashboard',
+            name:  'Dashboard',
+            component: ()=> import('@/view/pages/Dashboard.vue'),
+        },
+        {
+            path: '/dashboard_candidato',
+            name:  'DashboardCandidato',
+            component: ()=> import('@/view/pages/DashboardCandidato.vue'),
+        },
+        {
+            path: '/dashboard_eleitor',
+            name:  'DashboardEleitor',
+            component: ()=> import('@/view/pages/DashboardEleitor.vue'),
+        },
+        {
+            path: '/dashboard_partido',
+            name:  'DashboardPartido',
+            component: ()=> import('@/view/pages/DashboardPartido.vue'),
+        },
+        {
+            path: '/dashboard_resultado',
+            name:  'DashboardResultado',
+            component: ()=> import('@/view/pages/DashboardResultado.vue'),
         },
     ],
 });

@@ -37,7 +37,8 @@
               text-gray-900
             "
           >
-            Conheça o <br class="hidden lg:inline-block" />Vote Bem {{user.nome}}
+            Conheça o <br class="hidden lg:inline-block" />Vote Bem
+            {{ user.nome }}
           </h1>
           <p class="mb-8 leading-relaxed">
             Sistema de votação online ,com o objetivo de facilitar o voto
@@ -955,28 +956,22 @@
 <script>
 import "tailwindcss/dist/tailwind.min.css";
 import "./../../assets/css/index.css";
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   name: "Home",
-  
-  data() {
-    return {
-      
-    }
-  },
-  computed:{
 
-    ...mapState([
-      'user'
-    ]),
+  data() {
+    return {};
+  },
+  computed: {
+    ...mapState(["user"]),
   },
   methods: {
-    vota(){
-       this.$router.push({ name: 'ConsultarCanditado' });
-    }
+    vota() {
+      this.$router.push({ name: "ConsultarCanditado" });
+    },
   },
-  
 };
 </script>
 
