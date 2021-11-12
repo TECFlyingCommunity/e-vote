@@ -90,8 +90,8 @@ export default {
     name: 'Login',
     data: () => ({
     form: {
-      email: 'pedroermarinho@gmail.com',
-      senha: '123'
+      email: '',
+      senha: ''
     }
   }),
   methods: {
