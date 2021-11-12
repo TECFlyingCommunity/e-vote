@@ -1,5 +1,5 @@
 <template>
-  <div class="candidato ">
+  <div class="candidato">
     <v-btn class ='mx-4 mb-4 green white--text' elevation="2" small>Adicionar Candidato +</v-btn>
     
     
@@ -15,10 +15,10 @@
           </v-btn>
       
       
-      <v-card flat class='pa-3'>
-        <v-layout row wrap class='pa-3 project'>
+      <v-card flat class='pa-3 grey lighten-3 '>
+        <v-layout row wrap class='pa-3 project '>
 
-           <v-flex xs6 sm4 md3>
+           <v-flex xs6 sm4 md3 >
             <div class='caption grey--text'>ID</div>
             <div> {{project.id}}</div>
           </v-flex>
