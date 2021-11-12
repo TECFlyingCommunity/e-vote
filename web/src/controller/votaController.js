@@ -1,24 +1,24 @@
 import { http } from '../model/http';
-import {URL_API} from './constantes';
+import { URL_API } from './constantes';
 import store from './store';
 
- var candidato =  {}
+var candidato = {}
 
- const votar= async function (idCadidato) {
+const votar = async function (idCadidato) {
 
-    
-    await http.post(URL_API+"api/voto",{
+
+    await http.post(URL_API + "api/voto", {
         "eleitorID": store.state.user.id,
-        "candidatoID":idCadidato
+        "candidatoID": idCadidato
     });
 
 }
 
 
- const candidatoInfo = async function(numero){
-    const response = await http.get(URL_API+"api/candidato/numero/"+numero);
+const candidatoInfo = async function (numero) {
+    const response = await http.get(URL_API + "api/candidato/numero/" + numero);
 
-    candidato =  response.data;
+    candidato = response.data;
 
     console.log(candidato);
 
@@ -26,4 +26,4 @@ import store from './store';
 }
 
 
-export {candidatoInfo,votar,candidato}
+export { candidatoInfo, votar, candidato }

@@ -55,20 +55,33 @@
 
 
 <script>
+
+import { getPartidoAll } from "./../../controller/dashboardController";
 export default {
   name: "DashboardPartido",
   data() {
     return{
       datas:[
-        {id:'1',nome:'17',numero:'corno',sigla:'janielson'},
-        {id:'1',nome:'17',numero:'corno',sigla:'janielson'},
-        {id:'1',nome:'17',numero:'corno',sigla:'janielson'},
         
       ]
 
     }
   
-  }
+  },
+  async created() {
+    let partidos = await getPartidoAll();
+
+    partidos.forEach((element) => {
+      const data = {
+        id: element.id,
+        nome: element.nome,
+        numero:element.numero,
+        sigla: element.sigla,
+      };
+
+      this.datas.push(data);
+    });
+  },
 }
 </script>
 
