@@ -20,37 +20,37 @@
       <v-card flat class='pa-3 grey lighten-3'>
         <v-layout row wrap class='pa-3 data'>
 
-           <v-flex xs6 sm3 md1>
+           <v-flex xs1 sm1 md1>
             <div class='caption grey--text'>ID</div>
             <div> {{data.id}}</div>
           </v-flex>
 
-          <v-flex xs6 sm4 md3>
+          <v-flex xs3 sm3 md2 >
             <div class="caption grey--text">NOME</div>
             <div>{{ data.nome }}</div>
           </v-flex>
 
-          <v-flex xs6 sm4 md2>
+          <v-flex xs3 sm3 md3>
             <div class="caption grey--text">EMAIL</div>
             <div>{{ data.email }}</div>
           </v-flex>
 
-          <v-flex xs6 sm4 md2>
+          <v-flex xs2 sm2 md2>
             <div class="caption grey--text">CPF</div>
             <div>{{ data.cpf }}</div>
           </v-flex>
 
-          <v-flex xs4 sm4 md1>
+          <v-flex xs1 sm1 md1>
             <div class="caption grey--text">TITULO</div>
             <div>{{ data.titulo }}</div>
           </v-flex>
 
-          <v-flex xs4 sm4 md1>
+          <v-flex xs1 sm1 md1>
             <div class="caption grey--text">CIDADE</div>
             <div>{{ data.cidade }}</div>
           </v-flex>
 
-          <v-flex xs4 sm4 md2>
+          <v-flex xs2 sm2 md2>
             <div class="caption grey--text">TELEFONE</div>
             <div>{{ data.telefone }}</div>
           </v-flex>
@@ -69,9 +69,7 @@ export default {
   name: "DashboardEleitor",
   data() {
     return {
-      datas: [
-      
-      ],
+      datas: [],
     };
   },
   async created() {

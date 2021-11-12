@@ -57,14 +57,7 @@
               <v-list-item-title>Gerenciar partido</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item class="white--text" @click="pushDashboardResultado">
-            <v-list-item-icon>
-              <v-icon class="white--text">mdi-chart-sankey</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Resultados</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
+          
           <v-list-item class="white--text" @click="drawer = !drawer">
             <v-list-item-icon>
               <v-icon class="white--text">mdi-logout</v-icon>
@@ -104,10 +97,6 @@ export default {
     pushDashboardPartido() {
       this.$router.push({ name: "DashboardPartido" });
     },
-    pushDashboardResultado() {
-      this.$router.push({ name: "DashboardResultado" });
-    },
- 
   },
   computed: {
     ...mapState({
