@@ -15,7 +15,7 @@
           </v-btn>
       
       
-      <v-card flat class='pa-3'>
+      <v-card flat class='pa-3 grey lighten-3'>
         <v-layout row wrap class='pa-3 data'>
 
            <v-flex xs6 sm4 md3>

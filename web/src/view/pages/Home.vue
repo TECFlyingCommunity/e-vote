@@ -35,12 +35,18 @@
               mb-4
               font-medium
               text-gray-900
+              text-justify
+              
             "
-          >
-            Conheça o <br class="hidden lg:inline-block" />Vote Bem
-            {{ user.nome }}
+          > 
+            
+            <p>Conheça o Vote Bem</p>
+            <span>{{ user.nome }}</span>
+            
           </h1>
-          <p class="mb-8 leading-relaxed">
+
+          <div>
+          <p class="mb-8 leading-relaxed text-justify">
             Sistema de votação online ,com o objetivo de facilitar o voto
             ,diminuir a aglomeração e visar questões ambientais. Facilitar o
             voto pelo fator do usuário não precisar sair da sua casa para votar
@@ -48,12 +54,14 @@
             quantidade de poluição nas ruas em dias de eleição por não ter fluxo
             de pessoas na rua.
           </p>
+          </div>
           <div class="flex justify-center">
             <a
               @click="vota"
               class="
+                
                 inline-flex
-                text-white
+                white--text
                 bg-indigo-500
                 border-0
                 py-2
