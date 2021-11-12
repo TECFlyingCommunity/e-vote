@@ -64,6 +64,16 @@ const routes = new Router({
             name:  'DashboardPartido',
             component: ()=> import('@/view/pages/DashboardPartido.vue'),
         },
+        {
+            path: '/add_partido',
+            name:  'addPartido',
+            component: ()=> import('@/view/pages/addPartido.vue'),
+        },
+        {
+            path: '/add_candidato',
+            name:  'addCandidato',
+            component: ()=> import('@/view/pages/addCandidato.vue'),
+        },
        
     ],
 });

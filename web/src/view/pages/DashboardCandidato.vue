@@ -1,6 +1,6 @@
 <template>
   <div class="candidato">
-    <v-btn class="mx-4 mb-4 green white--text" elevation="2" small
+    <v-btn class="mx-4 mb-4 green white--text" elevation="2" small @click="pushAddCandidato"
       >Adicionar Candidato +</v-btn
     >
 
@@ -57,6 +57,11 @@ export default {
 
       candidatos: {},
     };
+  },
+   methods:{
+    pushAddCandidato() {
+      this.$router.push({ name: "addCandidato" });
+    },
   },
   async created() {
     let cadidatos = await getCandidatoAll();

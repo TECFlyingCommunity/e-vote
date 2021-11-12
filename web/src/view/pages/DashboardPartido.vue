@@ -1,6 +1,6 @@
 <template>
   <div class="partido">
-    <v-btn class="mx-4 mb-4 mt-2 green white--text" elevation="2" small
+    <v-btn class="mx-4 mb-4 mt-2 green white--text" elevation="2" small @click="pushAddPartido"
       >Adicionar Partido +</v-btn
     >
 
@@ -49,6 +49,11 @@ export default {
     return {
       datas: [],
     };
+  },
+  methods:{
+    pushAddPartido() {
+      this.$router.push({ name: "addPartido" });
+    },
   },
   async created() {
     let partidos = await getPartidoAll();

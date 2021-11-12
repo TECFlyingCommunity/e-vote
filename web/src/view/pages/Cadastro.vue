@@ -130,11 +130,11 @@ export default {
   data() {
     return {
       form: {
-        nome: "pedro marinho",
-        email: "pedro.erm238@gmail.com",
-        senha: "123",
-        cpf: "2342342",
-        titulo: "23642635",
+        nome: "",
+        email: "",
+        senha: "",
+        cpf: "",
+        titulo: "",
         cidadeID: 1,
       },
     };
