@@ -30,10 +30,17 @@ public class CandidatoController {
 		Candidato obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
+	
 	@RequestMapping(value="/numero/{numero}", method=RequestMethod.GET)
 	public ResponseEntity<Candidato> findByNumero(@PathVariable Integer numero) {
 		Candidato obj = service.findByNumero(numero);
 		return ResponseEntity.ok().body(obj);
+	}
+
+	@RequestMapping(value="/count", method=RequestMethod.GET)
+	public ResponseEntity<Long> count() {
+		final var  count = service.count();
+		return ResponseEntity.ok().body(count);
 	}
 	
 	

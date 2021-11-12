@@ -73,6 +73,11 @@ public class CandidatoService {
 	public List<Candidato> findAll() {
 		return repository.findAll();
 	}
+
+	public long count(){
+		final var result = repository.count();
+		return result;
+	}
 	
 	
 	

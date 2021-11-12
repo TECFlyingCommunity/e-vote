@@ -36,10 +36,6 @@ public class VotoService {
 		return  obj.orElseThrow(() -> new ObjectNotFoundException(
 				 "Objeto não encontrado! Id: " + id + ", Tipo: " + Voto.class.getName()));
 	}
-
-
-
-
 	
 	public Voto insert(NovoVotoDTO objDTO) {
 		objDTO.setId(null);
@@ -64,6 +60,11 @@ public class VotoService {
 		}
 
 		return new Voto(objDTO.getId(), eleitor, candidato);
+	}
+
+	public long count(){
+		final var result = repository.count();
+		return result;
 	}
 
 	public List<VotoDTO> findAll() {

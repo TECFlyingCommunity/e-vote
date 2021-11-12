@@ -72,6 +72,11 @@ public class EleitorService {
 	public List<Eleitor> findAll() {
 		return repository.findAll();
 	}
+
+	public long count(){
+		final var result = repository.count();
+		return result;
+	}
 	
 	private Eleitor fromObj(EleitorDTO objDTO) {
 		

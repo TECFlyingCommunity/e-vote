@@ -39,6 +39,12 @@ public class EleitorController {
 		Eleitor obj = service.find(UserService.authenticated().getId());
 		return ResponseEntity.ok().body(obj);
 	}
+
+	@RequestMapping(value="/count", method=RequestMethod.GET)
+	public ResponseEntity<Long> count() {
+		final var  count = service.count();
+		return ResponseEntity.ok().body(count);
+	}
 	
 	
 	

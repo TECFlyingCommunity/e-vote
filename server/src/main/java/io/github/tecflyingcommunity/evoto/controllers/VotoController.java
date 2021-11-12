@@ -33,8 +33,13 @@ public class VotoController {
 		return ResponseEntity.ok().body(obj);
 	}
 
+	@RequestMapping(value="/count", method=RequestMethod.GET)
+	public ResponseEntity<Long> count() {
+		final var  count = service.count();
+		return ResponseEntity.ok().body(count);
+	}
 	
-	@PreAuthorize("hasAnyRole('ADMIN')")
+
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody NovoVotoDTO objDTO) {
 		var obj = service.insert(objDTO);
@@ -44,6 +49,7 @@ public class VotoController {
 	}
 	
 	
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<List<VotoDTO>> findAll() {
 		List<VotoDTO> list = service.findAll();
